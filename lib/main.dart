@@ -34,11 +34,14 @@ class Home extends StatelessWidget {
         child: ListView(
           children: const <Widget>[
             UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
               accountName: Text('Hussein'),
               accountEmail: Text('m.hussein@alustudent.com'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
-                foregroundColor: Colors.green,
+                backgroundColor: Colors.green,
               ),
             ),
             // Creating the list of items for the side menu
@@ -89,30 +92,33 @@ class Home extends StatelessWidget {
             ),
           ),
           Container(
+            alignment: Alignment.center,
             padding:
                 const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            height: 150,
+            height: 200,
             width: 400,
-            color: Colors.blueGrey,
             child: RotatedBox(
               quarterTurns: 3,
               child: ClipPath(
-                child: Image.asset('assets/rotate.jpg'),
+                child: Image.asset('assets/rotate.jpg',
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.cover),
               ),
             ),
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
                 maxHeight: 200, maxWidth: 400, minHeight: 50, minWidth: 50),
             child: Container(
                 child: Image(
-              image: NetworkImage(
+              image: const NetworkImage(
                   'https://images.unsplash.com/photo-1499728603263-13726abce5fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'),
               height: 200,
               width: 400,
             )),
           ),
-          Text(
+          const Text(
             "Start your day with the following practices",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
@@ -162,15 +168,15 @@ class PopupOptionMenu extends StatelessWidget {
     return PopupMenuButton<MenuOption>(
       itemBuilder: (BuildContext context) {
         return <PopupMenuEntry<MenuOption>>[
-          PopupMenuItem(
+          const PopupMenuItem(
             child: Text('MyProgress'),
             value: MenuOption.MyProgress,
           ),
-          PopupMenuItem(
+          const PopupMenuItem(
             child: Text('Today'),
             value: MenuOption.Today,
           ),
-          PopupMenuItem(
+          const PopupMenuItem(
             child: Text('Custom'),
             value: MenuOption.Custom,
           ),
