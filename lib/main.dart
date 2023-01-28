@@ -21,13 +21,13 @@ class Home extends StatelessWidget {
             fontFamily: 'Poppins',
           ),
         ),
-        centerTitle: true, //centralize it
+        centerTitle: true, //centralizing the title
         backgroundColor: Colors.green[200],
         actions: const <Widget>[
-          PopupOptionMenu(),
+          PopupOptionMenu(), // calling the pop up menu to be displayed after the title widget
         ],
       ),
-
+      /**Side Menu */
       // creating the Side Menu
       drawer: Drawer(
         backgroundColor: Colors.white,
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
                 backgroundColor: Colors.green,
               ),
             ),
-            // Creating the list of items for the side menu
+            // Creating the list of items for the side menu display
             ListTile(
               title: Text("About Page"),
             ),
@@ -65,8 +65,10 @@ class Home extends StatelessWidget {
         ),
       ),
       body: Column(
+        //organising containers, constrainedBox, fittedBox and rotatedBox vertically oriented using columns
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
+        /** Child container with Padding */
         children: [
           Container(
             color: Colors.green[50],
@@ -91,10 +93,12 @@ class Home extends StatelessWidget {
               ],
             ),
           ),
+          /**Container containing RotatedBox */
           Container(
+            // container that has a Rotatedbox child that contains a child image that gets rotated
             alignment: Alignment.center,
             padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                const EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
             height: 200,
             width: 400,
             child: RotatedBox(
@@ -107,7 +111,9 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
+          /**ConstrainedBox Widget */
           ConstrainedBox(
+            // adding size constraints to the child widgets
             constraints: const BoxConstraints(
                 maxHeight: 200, maxWidth: 400, minHeight: 50, minWidth: 50),
             child: Container(
@@ -122,15 +128,16 @@ class Home extends StatelessWidget {
             "Start your day with the following practices",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
+          /**FittedBox */
           FittedBox(
-            //keep the images responsive
+            //keep the images responsive using the fittedBox
             child: Container(
               padding:
                   const EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0),
               child: Row(
                 children: [
                   Image.asset('assets/meditating.jpg'),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                     width: 10,
                   ),
@@ -139,7 +146,7 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-          Text(
+          const Text(
             "Nature Image of the day",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
