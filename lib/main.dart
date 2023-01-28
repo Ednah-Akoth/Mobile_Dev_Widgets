@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Wisdom & Wellness',
           style: TextStyle(
             fontSize: 20,
@@ -27,17 +27,37 @@ class Home extends StatelessWidget {
           PopupOptionMenu(),
         ],
       ),
-      drawer: new Drawer(
+
+      // creating the Side Menu
+      drawer: Drawer(
         backgroundColor: Colors.white,
         child: ListView(
-          children: <Widget>[
-            new UserAccountsDrawerHeader(
-              accountName: Text('Ednah'),
-              accountEmail: Text('e.akoth@alustudent.com'),
+          children: const <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text('Hussein'),
+              accountEmail: Text('m.hussein@alustudent.com'),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage('https://i.pravatar.cc/300'),
+                backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+                foregroundColor: Colors.green,
               ),
-            )
+            ),
+            // Creating the list of items for the side menu
+            ListTile(
+              title: Text("About Page"),
+            ),
+            Divider(
+              color: Colors.black26,
+              height: 10.0,
+            ),
+            ListTile(
+              title: Text("Offers"),
+            ),
+            ListTile(
+              title: Text("Categories"),
+            ),
+            ListTile(
+              title: Text("Settings"),
+            ),
           ],
         ),
       ),
@@ -51,21 +71,34 @@ class Home extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 SizedBox(
                   height: 50,
                   width: 50,
                   child: Image(
-                    image: AssetImage(
-                      'assets/flower.jpg',
+                    image: NetworkImage(
+                      "https://i.pravatar.cc/300",
                     ),
                   ),
                 ),
                 Text(
-                  'Good Morning, Ednah ❣️',
+                  'Good Morning, Hussein ❣️',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ],
+            ),
+          ),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            height: 150,
+            width: 400,
+            color: Colors.blueGrey,
+            child: RotatedBox(
+              quarterTurns: 3,
+              child: ClipPath(
+                child: Image.asset('assets/rotate.jpg'),
+              ),
             ),
           ),
           ConstrainedBox(
@@ -86,7 +119,8 @@ class Home extends StatelessWidget {
           FittedBox(
             //keep the images responsive
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0),
               child: Row(
                 children: [
                   Image.asset('assets/meditating.jpg'),
@@ -103,16 +137,6 @@ class Home extends StatelessWidget {
             "Nature Image of the day",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            height: 200,
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: ClipPath(
-                child: Image.asset('assets/rotate.jpg'),
-              ),
-            ),
-          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -120,8 +144,8 @@ class Home extends StatelessWidget {
           print('I have been clicked!');
         },
         tooltip: 'Click Here',
-        icon:  Icon(Icons.add, size: 30.0),
-        label: Text('Add Action Item'),
+        icon: Icon(Icons.add, size: 20.0),
+        label: Text('Add Item'),
         backgroundColor: Colors.green[200],
       ),
     );
